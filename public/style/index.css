@@ -128,37 +128,71 @@ body {
   position: absolute;
 }
 
-#picimg1 > img {
-  width: 60%;
-}
-
-#picimg2 > img {
-  position: relative;
-  left: 10%;
-  top: 3vh;
+#picimg1{
+  position: absolute;
+  left: 0%;
   width: 55%;
+  /* height: 500px; */
+  z-index: 10;
+  transition:.5s;
 }
-
-#picimg3 > img {
-  position: relative;
-  left: 20%;
+ #picimg1 > img {
+  width: 100%;
+  cursor: pointer;
+} 
+#picimg2{
+  /* cursor: pointer; */
+  width: 55%;
+  position: absolute;
+  left: 11%;
+  top: 3vh;
+  z-index: 9;
+  transition:.5s;
+}
+#picimg2>img{
+  cursor: pointer;
+  width: 100%;
+}
+#picimg3{
+  width: 55%;
+  z-index: 8;
+  position: absolute;
+  left: 22%;
   top: 6vh;
-  width: 50%;
+  transition: .5s;
+}
+#picimg3>img{
+  cursor: pointer;
+  width: 100%;
 }
 
-#picimg4 > img {
-  position: relative;
-  left: 30%;
+#picimg4{
+  width: 55%;
+  z-index: 7;
+  position: absolute;
+  left: 32%;
   top: 9vh;
-  width: 45%;
+  transition: .5s;
+}
+#picimg4>img{
+  cursor: pointer;
+  width: 100%;
+}
+#picimg5{
+  width: 55%;
+  z-index: 6;
+  position: absolute;
+  left: 42%;
+  top: 12vh;
+  transition: .5s;
+}
+#picimg5>img{
+  cursor: pointer;
+  width: 100%;
 }
 
-#picimg5 > img {
-  position: relative;
-  left: 40%;
-  top: 12vh;
-  width: 40%;
-}
+
+
 
 .text {
   padding-top: 5%;
@@ -168,7 +202,12 @@ body {
   /* border: #4495E1 solid 1px; */
   min-width: 400px;
 }
-
+#text1{
+  display: block;
+}
+#text2,#text3,#text4,#text5{
+  display: none;
+}
 .text h1 {
   margin-bottom: 2rem;
   letter-spacing: 0.3rem;
