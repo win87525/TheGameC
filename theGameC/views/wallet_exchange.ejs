@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 轉點系統</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <%- include('share/wallet/wallet_left')%>
+
+      <!-- 右半部 -->
+      <div class="s2right">
+        <!-- 選擇遊戲 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇遊戲</p></div>
+          <div class="s2part1down">
+            <div class="wallet_games">
+              <% userGame.games.map(function(v,i){ %>
+              <div class="game_div">
+                <div class="wallet_game">
+                  <div>
+                    <img src=<%=`/img/Games/${userGame.images[i]}` %> />
+                  </div>
+                  <p><%= v %></p>
+                </div>
+              </div>
+              <% }) %>
+              <!-- <div class="game_div">
+                <div class="wallet_game">
+                  <div>
+                    <img src="/img/Games/AVA/cover.jpg" />
+                  </div>
+                  <p>戰地之王</p>  
+                </div>
+              </div>-->
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+        <!-- 選擇轉點面額 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇轉點面額</p></div>
+          <div class="s3part1down">
+            <ul>
+              <li>
+                <span>轉入 50 C幣 至遊戲 (轉換最低金額)</span>
+                <button onclick="exchange(50)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 100 C幣 至遊戲 </span>
+                <button onclick="exchange(100)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 250 C幣 至遊戲 </span>
+                <button onclick="exchange(250)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 500 C幣 至遊戲 </span>
+                <button onclick="exchange(500)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 1000 C幣 至遊戲 </span>
+                <button onclick="exchange(1000)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 確認轉點視窗 -->
+    <dialog id="exchangedialog">
+      <button id="closeDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form action="">
+        <div>
+          <p>確認購買內容</p>
+          <div class="exconfirm">
+            <li>
+              <span>遊戲</span>
+              <span id="exchangeGame">0</span>
+            </li>
+            <li>
+              <span>C幣</span>
+              <span
+                ><img src="/img/wallet/coinIcon.png" /><span id="exchangeC"
+                  >0</span
+                ></span
+              >
+            </li>
+          </div>
+          <hr />
+        </div>
+        <button>確認轉點</button>
+      </form>
+    </dialog>
+    <script src="/app/app.js"></script>
+    <script>
+      // 選擇遊戲
+      var gameSelect = Array.from(document.querySelectorAll(".wallet_game"));
+      gameSelect.forEach((style) => {
+        style.addEventListener("click", function () {
+          gameSelect.forEach((style) => {
+            style.classList.remove("GSelected");
+          });
+          this.classList.add("GSelected");
+        });
+      });
+
+      // 選擇轉點 + dialog
+      function exchange(coin) {
+        var gameName = document.querySelector(".GSelected p");
+
+        if (gameName == null) {
+          alert("您尚未選擇遊戲。");
+        } else {
+          document.querySelector("#exchangeGame").innerHTML =
+            gameName.innerText;
+          document.querySelector("#exchangeC").innerHTML = coin;
+          document.querySelector("dialog").showModal();
+        }
+      }
+      // 關閉 dialog
+      closeDialog.addEventListener("click", () => {
+        document.querySelector("dialog").close();
+      });
+    </script>
+  </body>
+</html>
