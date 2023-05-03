@@ -46,7 +46,7 @@ app.get("*", (req, res) => {
 });
 
 /*--- 伺服器 ---*/
-app.listen(3000, () => {
+app.listen(80, () => {
   console.log("【伺服器 port 80 啟動】");
   console.log("【Ctrl + C 可關閉伺服器】");
 });

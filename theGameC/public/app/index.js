@@ -9,92 +9,20 @@ $(document).ready(function () {
         $('#text4').fadeOut(0);
         $('#text5').fadeOut(0);
         $('#text1').fadeIn(800);
-        $(this).css("left", "60%");
-        setTimeout(() => {
-            $(this).css({
-                "left": "0%",
-                "zIndex": "12"
-            }); 
-            $("#picimg2").css({
-                "left": "11%",
-                "zIndex": "9"
-            });
-            $("#picimg3").css({
-                "left": "22%",
-                "zIndex": "8"
-            });
-            $("#picimg4").css({
-                "left": "32%",
-                "zIndex": "7"
-            });
-            $("#picimg5").css({
-                "left": "42%",
-                "zIndex": "6"
-            });
-            
-        }, 400);
     });
     $('#picimg2').click(function () {
         $('#text1').fadeOut(0);
         $('#text3').fadeOut(0);
         $('#text4').fadeOut(0);
         $('#text5').fadeOut(0);
-        $('#text2').fadeIn(1200);
-        $(this).css("left", "60%");
-        setTimeout(() => {
-            $(this).css({
-                "left": "11%",
-                "zIndex": "12"
-            }); 
-            $("#picimg1").css({
-                "left": "0%",
-                "zIndex": "10"
-            });
-            $("#picimg3").css({
-                "left": "22%",
-                "zIndex": "8"
-            });
-            $("#picimg4").css({
-                "left": "32%",
-                "zIndex": "7"
-            });
-            $("#picimg5").css({
-                "left": "42%",
-                "zIndex": "6"
-            });
-            
-        }, 400);
+        $('#text2').fadeIn(800);
     });
     $('#picimg3').click(function () {
         $('#text1').fadeOut(0);
         $('#text2').fadeOut(0);
         $('#text4').fadeOut(0);
         $('#text5').fadeOut(0);
-        $('#text3').fadeIn(1200);
-        $(this).css("left", "60%");
-        setTimeout(() => {
-            $(this).css({
-                "left": "22%",
-                "zIndex": "12"
-            }); 
-            $("#picimg1").css({
-                "left": "0%",
-                "zIndex": "10"
-            });
-            $("#picimg2").css({
-                "left": "11%",
-                "zIndex": "9"
-            });
-            $("#picimg4").css({
-                "left": "32%",
-                "zIndex": "7"
-            });
-            $("#picimg5").css({
-                "left": "42%",
-                "zIndex": "6"
-            });
-            
-        }, 400);
+        $('#text3').fadeIn(800);
     });
     $('#picimg4').click(function () {
         $('#text1').fadeOut(0);
@@ -102,30 +30,6 @@ $(document).ready(function () {
         $('#text3').fadeOut(0);
         $('#text5').fadeOut(0);
         $('#text4').fadeIn(800);
-        $(this).css("left", "70%");
-        setTimeout(() => {
-            $(this).css({
-                "left": "32%",
-                "zIndex": "12"
-            }); 
-            $("#picimg1").css({
-                "left": "0%",
-                "zIndex": "10"
-            });
-            $("#picimg3").css({
-                "left": "22%",
-                "zIndex": "8"
-            });
-            $("#picimg2").css({
-                "left": "11%",
-                "zIndex": "9"
-            });
-            $("#picimg5").css({
-                "left": "42%",
-                "zIndex": "6"
-            });
-            
-        }, 400);
     });
     $('#picimg5').click(function () {
         $('#text1').fadeOut(0);
@@ -133,30 +37,6 @@ $(document).ready(function () {
         $('#text3').fadeOut(0);
         $('#text4').fadeOut(0);
         $('#text5').fadeIn(800);
-        $(this).css("left", "70%");
-        setTimeout(() => {
-            $(this).css({
-                "left": "42%",
-                "zIndex": "12"
-            }); 
-            $("#picimg1").css({
-                "left": "0%",
-                "zIndex": "10"
-            });
-            $("#picimg3").css({
-                "left": "22%",
-                "zIndex": "8"
-            });
-            $("#picimg4").css({
-                "left": "32%",
-                "zIndex": "7"
-            });
-            $("#picimg2").css({
-                "left": "11%",
-                "zIndex": "9"
-            });
-            
-        }, 400);
     });
 
 
