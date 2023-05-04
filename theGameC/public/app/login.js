@@ -1,33 +1,47 @@
-function toggleSignin() {
-    // 取得Loginpage和Signinpage的元素
-    var loginPage = document.querySelector(".loginpage");
-    var signinPage = document.querySelector(".signinpage");
-  
-    // 切換它們的顯示與隱藏
-    if (loginPage.style.display === "none") {
-      loginPage.style.display = "block";
-      signinPage.style.display = "none";
-      // 更改btnt和btnd的背景色
-      document.querySelector(".btnt").style.backgroundColor = "#fff";
-      document.querySelector(".btnd").style.backgroundColor = "transparent";
-  
-      // 添加CSS動畫
-      loginPage.style.animation = "slideInLeft 0.5s ease-in-out forwards";
-      signinPage.style.animation = "slideOutLeft 0.5s ease-in-out forwards";
-    } else {
-      loginPage.style.display = "none";
-      signinPage.style.display = "block";
-      // 更改btnt和btnd的背景色
-      document.querySelector(".btnt").style.backgroundColor = "transparent";
-      document.querySelector(".btnd").style.backgroundColor = "#fff";
-  
-      // 添加CSS動畫
-      signinPage.style.animation = "slideInLeft 0.5s ease-in-out forwards";
-      loginPage.style.animation = "slideOutLeft 0.5s ease-in-out forwards";
-    }
-  }
-  
-  // 監聽btnt和btnd的click事件
-  document.querySelector(".btnt").addEventListener("click", toggleSignin);
-  document.querySelector(".btnd").addEventListener("click", toggleSignin);
-  
+$(document).ready(function () {
+  $(".btnsign").click(function () {
+    $("#loginpage").fadeOut(0);
+    $("#signbox").fadeIn(800);
+    $(".btnbg").css("top", "95px");
+    $(".btnsign").css("color", "#1C3D5C");
+    $(".btnlogin").css("color", "white");
+  });
+  $(".btnlogin").click(function () {
+    $("#loginpage").fadeIn(800);
+    $("#signbox").fadeOut(0);
+    $(".btnbg").css("top", "3px");
+    $(".btnlogin").css("color", "#1C3D5C");
+    $(".btnsign").css("color", "white");
+  });
+
+  $("#eyeclose").click(function () {
+    $("#eyeopen").css("display", "block");
+    $("#eyeclose").css("display", "none");
+    $("#password1").attr("type", "text");
+  });
+  $("#eyeopen").click(function () {
+    $("#eyeopen").css("display", "none");
+    $("#eyeclose").css("display", "block");
+    $("#password1").attr("type", "password");
+  });
+  $("#eyeclose2").click(function () {
+    $("#eyeopen2").css("display", "block");
+    $("#eyeclose2").css("display", "none");
+    $("#password2").attr("type", "text");
+  });
+  $("#eyeopen2").click(function () {
+    $("#eyeopen2").css("display", "none");
+    $("#eyeclose2").css("display", "block");
+    $("#password2").attr("type", "password");
+  });
+  $("#eyeclose3").click(function () {
+    $("#eyeopen3").css("display", "block");
+    $("#eyeclose3").css("display", "none");
+    $("#password3").attr("type", "text");
+  });
+  $("#eyeopen3").click(function () {
+    $("#eyeopen3").css("display", "none");
+    $("#eyeclose3").css("display", "block");
+    $("#password3").attr("type", "password");
+  });
+});
