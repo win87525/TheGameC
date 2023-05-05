@@ -4,7 +4,7 @@ const page = express.Router();
 const config = require("./config"); // 引用 config
 
 /* 會員資料 */
-page.get("/user/:id", (req, res) => {
+page.get("/user/:id", (req, res) => {  //這裡的user是可以自訂義的，但是wallet.js那邊就要照這邊
   var sql =
     "SELECT *, DATE_FORMAT(birthday, '%Y-%m-%d') AS birthday FROM users WHERE user_id = ?;";
   config.query(
@@ -42,5 +42,7 @@ ORDER BY
     }
   );
 });
+
+
 
 module.exports = page;

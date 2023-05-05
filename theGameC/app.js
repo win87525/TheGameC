@@ -6,7 +6,7 @@ const app = express();
 const cors = require("cors"); // 允許不同網域請求
 const bodyParser = require("body-parser"); // 允許不同網域請求
 
-/*--- 導入網頁路由 ---*/
+/*--- 導入網頁路由，渲染頁面 ---*/
 const indexPage = require("./routes/index"); // 首頁
 const loginPage = require("./routes/login"); // 登入頁
 const gamePage = require("./routes/games"); // 遊戲大頁
@@ -31,7 +31,7 @@ app.use("/", indexPage);
 app.use("/wallet/", walletPage);
 app.use("/news/", newsPage);
 app.use("/products/", shoppingCartPage);
-app.use("/", loginPage);
+app.use("/login", loginPage);
 app.use("/", gamePage);
 
 /*--- CRUD for All 路由 ---*/
@@ -43,6 +43,10 @@ app.use("/", selectForAll);
 /*--- 網頁 404 ---*/
 app.get("*", (req, res) => {
   res.render("404");
+});
+
+app.get("/zz/:id", (req, res) => {
+  res.send("123npm")
 });
 
 /*--- 伺服器 ---*/
