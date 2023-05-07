@@ -45,9 +45,6 @@ app.get("*", (req, res) => {
   res.render("404");
 });
 
-app.get("/zz/:id", (req, res) => {
-  res.send("123npm")
-});
 
 /*--- 伺服器 ---*/
 app.listen(80, () => {

@@ -23,21 +23,15 @@ page.post('/signin', function (req, res) {
         // console.log(username);
 
         if (err) {
-            console.log("Error:", err);
-            res.send("Error occurred during inserting recharge data!");
+            console.log("Error:", err.sqlMessage);
+            // res.send("Error occurred during inserting recharge data!");
+            // res.redirect('/login')
           } else {
             console.log("Insert recharge data successfully:", results);
             res.send(results);
           }
-        // console.log(results[0].phone);
-        // console.log(err.sql);
-        // console.log(fields);
     })
-    // res.render("login");
-    // res.send(username + '註冊成功');
-    // res.redirect('/login')
-    //   alert('註冊成功')
-    // config.end();
+  
 })
 
 module.exports = page;

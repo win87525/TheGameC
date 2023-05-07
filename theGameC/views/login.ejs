@@ -22,6 +22,7 @@
   <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
   <!-- JSDelivr -->
   <link href="https://cdn.jsdelivr.net/npm/css.gg/icons/all.css" rel="stylesheet" />
+
   <style>
     body {
       padding: 0px;
@@ -133,7 +134,7 @@
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
             </div>
-          <input type="text" name="user_id" value="<%=  userLast.user_id %>">
+            <input style="display: none;" type="text" name="user_id" value="<%=  userLast.user_id %>">
           </form>
         </div>
       </div>
@@ -145,23 +146,26 @@
         // 信用卡確認紐
         $("#signbut").on("click", function () {
           // const userId = $("#user_id").val();
-          $.ajax({
-            url: "/login/signin",
-            type: "POST",
-            data: {
-              user_id: parseInt($("input[name='user_id']").val()) + 1 ,
-              username: $("input[name='username']").val(),
-              password: $("input[id='password2']").val(),
-              email: $("input[name='email']").val(),
-              phone: $("input[name='phone']").val(),
-              birthday: $("input[name='birthday']").val()
-            },
-          }).done(function(){
-            alert("註冊成功");
-          location.reload();
-          })
-          // console.log(data);
- 
+          if ($('#password2').val() === $('#password3').val()) {
+            $.ajax({
+              url: "/login/signin",
+              type: "POST",
+              data: {
+                user_id: parseInt($("input[name='user_id']").val()) + 1,
+                username: $("input[name='username']").val(),
+                password: $("input[id='password2']").val(),
+                email: $("input[name='email']").val(),
+                phone: $("input[name='phone']").val(),
+                birthday: $("input[name='birthday']").val()
+              },
+            }).done(function () {
+              alert("註冊成功，請登入");
+              location.reload();
+            })
+            // console.log(data);
+          } else {
+           alert("內容有誤");
+          }
         });
       })
     </script>
