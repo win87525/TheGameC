@@ -45,40 +45,40 @@
 
       <div class="rightbox">
         <div class="loginpage" id="loginpage">
-          <form action="/login" method="post">
-            <div class="loginPagelogo">
-              <img src="./img/login/login_logo.png" alt="" />
-            </div>
-            <div class="divinput">
-              <i class="bi bi-person"></i>
-              <input type="text" class="loginu" placeholder="UserName" name="UserName" title="請檢查帳號大小寫有無出錯" required />
-            </div>
+          <div class="loginPagelogo">
+            <img src="./img/login/login_logo.png" alt="" />
+          </div>
+          <div class="divinput">
+            <i class="bi bi-person"></i>
+            <input type="text" class="loginu" id="loginUsername" placeholder="UserName" name="UserName"
+              title="請檢查帳號大小寫有無出錯" required />
+          </div>
 
-            <div class="divinput">
-              <div class="lockIcon">
-                <i class="gg-lock"></i>
-              </div>
-              <input id="password1" type="password" class="loginu" name="password" placeholder="Password"
-                title="請確認字母大小寫是否正確" required />
-              <i id="eyeclose" class="bi-eye-slash"></i>
-              <i id="eyeopen" class="bi-eye"></i>
+          <div class="divinput">
+            <div class="lockIcon">
+              <i class="gg-lock"></i>
             </div>
-            <input type="submit" class="logins" value="會員登入" />
+            <input id="password1" type="password" class="loginu" name="password" placeholder="Password"
+              title="請確認字母大小寫是否正確" required />
+            <i id="eyeclose" class="bi-eye-slash"></i>
+            <i id="eyeopen" class="bi-eye"></i>
+          </div>
+          <input type="submit" id="loginbtn" class="logins" value="會員登入" />
 
-            <div class="line-with-circle">
-              <div class="divhr"></div>
-              <div class="circle"></div>
-              <div class="divhr"></div>
-            </div>
-            <div class="logobtn">
-              <a href="#">Facebook</a>
-              <a href="#">Google+</a>
-            </div>
-          </form>
+          <div class="line-with-circle">
+            <div class="divhr"></div>
+            <div class="circle"></div>
+            <div class="divhr"></div>
+          </div>
+          <div class="logobtn">
+            <a href="#">Facebook</a>
+            <a href="#">Google+</a>
+          </div>
         </div>
 
         <div class="signbox" id="signbox">
-          <form class="loginbox" action="/signin" method="post">
+          <!-- <form class="loginbox" action="/signin" method="post"> -->
+          <div class="loginbox">
             <div class="loginPagelogo">
               <img src="./img/login/login_logo.png" alt="" />
             </div>
@@ -129,13 +129,13 @@
                 </div>
               </div>
             </div>
-            <input type="submit" class="logins" id="signbut" value="註冊內容" />
+            <input type="submit" class="logins" id="signbtn" value="註冊內容" />
             <div class="logobtn">
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
             </div>
             <input style="display: none;" type="text" name="user_id" value="<%=  userLast.user_id %>">
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -144,7 +144,7 @@
     <script>
       $(function () {
         // 信用卡確認紐
-        $("#signbut").on("click", function () {
+        $("#signbtn").on("click", function () {
           // const userId = $("#user_id").val();
           if ($('#password2').val() === $('#password3').val()) {
             $.ajax({
@@ -158,16 +158,53 @@
                 phone: $("input[name='phone']").val(),
                 birthday: $("input[name='birthday']").val()
               },
-            }).done(function () {
-              alert("註冊成功，請登入");
-              location.reload();
+            }).done(function (data) {
+              if (data == "success") {
+                alert("註冊成功，請登入");
+                console.log(data)
+              } else {
+                // data.includes('username')?alert("內容有誤-帳號"):
+                // data.includes('email')?   alert("內容有誤-信箱"):alert("內容有誤-其它錯誤")
+                if (data.includes('username')) {
+                  alert("內容有誤-帳號")
+                } else if (data.includes('email')) {
+                  alert("內容有誤-信箱")
+                } else {
+                  alert("內容有誤-其它錯誤")
+                }
+                console.log(data)
+              }
+              // location.reload();
             })
             // console.log(data);
+
           } else {
-           alert("內容有誤");
+            alert("內容有誤-密碼不相同");
+            location.reload();
           }
         });
+
+        $("#loginbtn").on("click", function () {
+          $.ajax({
+            url: "/login/getUsername",
+            type: "POST",
+            data: {
+              username: $("input[id='loginUsername']").val(),
+              password: $("input[id='password1']").val()
+            },
+          }).done(function (data) {
+            console.log(data)
+
+            if (data == true) {
+              alert("登入成功");
+            } else {
+              alert("帳號或密碼錯誤");
+            }
+            // location.reload();
+          })
+        });
       })
+
     </script>
 </body>
 

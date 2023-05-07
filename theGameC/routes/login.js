@@ -16,15 +16,7 @@ page.get("/", async (req, res) => {
     userLast: usersSelect.data,
   });
 });
-page.get("/", async (req, res) => {
-  let Selectuser = await axios.get(
-    `http://localhost:80/login/getUsername`
-  );
 
-  res.render("login", {
-    userName: Selectuser.data,
-  });
-});
 
 // 綁定為 http://localhost/wallet/...
 // 主要用於 wallet_CRUD

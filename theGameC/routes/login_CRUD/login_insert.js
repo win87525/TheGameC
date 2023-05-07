@@ -23,15 +23,24 @@ page.post('/signin', function (req, res) {
         // console.log(username);
 
         if (err) {
-            console.log("Error:", err.sqlMessage);
             // res.send("Error occurred during inserting recharge data!");
             // res.redirect('/login')
+            res.send('error: '+ err.sqlMessage)
           } else {
             console.log("Insert recharge data successfully:", results);
-            res.send(results);
+            // res.send(results[0]);
+            res.send('success')
           }
     })
   
 })
+page.post("/getUsername", (req, res) => {
+  var sql = `SELECT * FROM users WHERE username='${req.body.username}' AND password='${req.body.password}';`
+  config.query(sql, function (err, results, fields) {
+    if (err) throw err;
+    // res.send(JSON.stringify(results));
+    res.send(results.length > 0);
+  });
+});
 
 module.exports = page;
