@@ -130,6 +130,7 @@
               </div>
             </div>
             <input type="submit" class="logins" id="signbtn" value="註冊內容" />
+            <input type="submit" class="logins" id="signbtn5" value="測試正規" />
             <div class="logobtn">
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
@@ -143,9 +144,20 @@
     <script src="/app/login.js"></script>
     <script>
       $(function () {
-        // 信用卡確認紐
+        $("#signbtn5").on("click", function () {
+          const ckPassword = $("input[name='email']").val();
+          // const ckPassword = "iwn923@gmaissd";
+          const passwordRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+          // console.log(passwordRegex.test(ckPassword))
+          if (passwordRegex.test(ckPassword)==false) {
+            alert("請確保信箱是以abc123@gmail.com的格式輸入")
+          }
+        })
+
+        // 註冊鈕
         $("#signbtn").on("click", function () {
           // const userId = $("#user_id").val();
+
           if ($('#password2').val() === $('#password3').val()) {
             $.ajax({
               url: "/login/signin",
@@ -166,11 +178,11 @@
                 // data.includes('username')?alert("內容有誤-帳號"):
                 // data.includes('email')?   alert("內容有誤-信箱"):alert("內容有誤-其它錯誤")
                 if (data.includes('username')) {
-                  alert("內容有誤-帳號")
+                  alert("該帳號已有人使用")
                 } else if (data.includes('email')) {
-                  alert("內容有誤-信箱")
+                  alert("該信箱已有人使用")
                 } else {
-                  alert("內容有誤-其它錯誤")
+                  alert("請確認表格皆有填寫正確")
                 }
                 console.log(data)
               }
