@@ -86,7 +86,8 @@ p {
   left: 30%;
   top: 25%;
 }
-.signbox{
+
+.signbox {
   width: 70%;
   /* background-color: antiquewhite; */
   position: relative;
@@ -212,8 +213,9 @@ p {
   box-shadow: 7px 7px 11px rgba(78, 78, 78, 0.25);
   /* transition: 1s; */
 }
-.logins:active{
-  background-color:#0057A8;
+
+.logins:active {
+  background-color: #0057A8;
   padding: .4rem 4.9rem;
 }
 
@@ -259,14 +261,93 @@ p {
   border-radius: 1rem;
 }
 
+/* 忘記密碼彈跳窗 */
+.wrap {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  /* background-color: #FFB80C; */
+  text-decoration: none;
+  color: #1e1e1e;
+  padding: .5rem 3rem;
+  border-radius: 5px;
+}
+.btn:hover{
+  background-color: rgb(230, 230, 230);
+}
+
+.popup-wrap {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  content: '';
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.popup-box {
+  width: 50%;
+  padding: 50px 75px;
+  transform: translate(-50%, -50%) scale(0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0px 2px 16px rgba(214, 213, 213, 0.5);
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+}
+
+
+
+.close-btn {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 100%;
+  background: #d75f70;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  line-height: 40px;
+  font-size: 32px;
+}
+
+.transform-in,
+.transform-out {
+  display: block;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.transform-in {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.transform-out {
+  -webkit-transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+
+/* RWD */
 @media screen and (max-width:1300px) {
 
   .loginpage {
     width: 50%;
     left: 25%;
   }
-  .signbox{
-width: 80%;
-left: 10%;
+
+  .signbox {
+    width: 80%;
+    left: 10%;
   }
 }

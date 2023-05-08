@@ -65,6 +65,9 @@
               <i id="eyeopen" class="bi-eye"></i>
             </div>
             <input type="submit" id="loginbtn" class="logins" value="會員登入" />
+            <div class="wrap">
+              <a class="btn popup-btn" href="#letmeopen">忘記密碼</a>
+            </div>
 
             <div class="line-with-circle">
               <div class="divhr"></div>
@@ -76,6 +79,15 @@
               <a href="#">Google+</a>
             </div>
           </form>
+          <!-- 忘記密碼彈跳窗 -->
+
+          <div class="popup-wrap" id="letmeopen">
+            <div class="popup-box transform-out">
+              <input type="text" value="請輸入帳號">
+              <input type="email" value="請填寫註冊時信箱">
+              <a class="close-btn popup-close" href="#">x</a>
+            </div>
+          </div>
         </div>
 
         <div class="signbox" id="signbox">
@@ -141,6 +153,7 @@
         </div>
       </div>
     </div>
+
     <script src="./app.js"></script>
     <script src="/app/login.js"></script>
     <script>

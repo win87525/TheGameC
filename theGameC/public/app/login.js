@@ -46,22 +46,23 @@ $(document).ready(function () {
   });
 
 
-// 在 AJAX 請求成功後處理返回的數據
-xhr.onload = function() {
-  if (xhr.status === 200) {
-      // 處理正常返回的數據
-  } else {
-      // 如果返回的數據狀態不是 200 OK，則顯示錯誤訊息
-      const error = JSON.parse(xhr.responseText).error;
-      const alertContainer = document.querySelector('#alertContainer');
-      alertContainer.innerHTML = `
-          <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              ${error}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-      `;
+   // 忘記密碼
+   $(".popup-btn").click(function () {
+    var href = $(this).attr("href")
+    $(href).fadeIn(250);
+    $(href).children$("popup-box").removeClass("transform-out").addClass("transform-in");
+    e.preventDefault();
+  });
+
+  $(".popup-close").click(function () {
+    closeWindow();
+  });
+  // $(".popup-wrap").click(function(){
+  //   closeWindow();
+  // })
+  function closeWindow() {
+    $(".popup-wrap").fadeOut(200);
+    $(".popup-box").removeClass("transform-in").addClass("transform-out");
+    event.preventDefault();
   }
-};
-
-
 });
