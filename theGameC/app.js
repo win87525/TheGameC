@@ -1,10 +1,26 @@
 // 如果有要更改或新增東西，照下面分類放
-
 /*--- module ---*/
 const express = require("express");
 const app = express();
 const cors = require("cors"); // 允許不同網域請求
 const bodyParser = require("body-parser"); // 允許不同網域請求
+
+// session設定
+var session = require('express-session');
+app.use(session({
+  secret: 'appelpsdogd',
+  resave: true,
+  saveUninitialized: true,
+
+  cookie: {
+    path: '/',
+    httpOnly: true,
+    secure: false,
+    maxAge: 100 * 1000
+  }
+}))
+
+
 
 /*--- 導入網頁路由，渲染頁面 ---*/
 const indexPage = require("./routes/index"); // 首頁

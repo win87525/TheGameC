@@ -45,40 +45,42 @@
 
       <div class="rightbox">
         <div class="loginpage" id="loginpage">
-          <div class="loginPagelogo">
-            <img src="./img/login/login_logo.png" alt="" />
-          </div>
-          <div class="divinput">
-            <i class="bi bi-person"></i>
-            <input type="text" class="loginu" id="loginUsername" placeholder="UserName" name="UserName"
-              title="請檢查帳號大小寫有無出錯" required />
-          </div>
-
-          <div class="divinput">
-            <div class="lockIcon">
-              <i class="gg-lock"></i>
+          <form id="loginForm">
+            <div class="loginPagelogo">
+              <img src="./img/login/login_logo.png" alt="" />
             </div>
-            <input id="password1" type="password" class="loginu" name="password" placeholder="Password"
-              title="請確認字母大小寫是否正確" required />
-            <i id="eyeclose" class="bi-eye-slash"></i>
-            <i id="eyeopen" class="bi-eye"></i>
-          </div>
-          <input type="submit" id="loginbtn" class="logins" value="會員登入" />
+            <div class="divinput">
+              <i class="bi bi-person"></i>
+              <input type="text" class="loginu" id="loginUsername" placeholder="UserName" name="UserName"
+                title="請檢查帳號大小寫有無出錯" required />
+            </div>
 
-          <div class="line-with-circle">
-            <div class="divhr"></div>
-            <div class="circle"></div>
-            <div class="divhr"></div>
-          </div>
-          <div class="logobtn">
-            <a href="#">Facebook</a>
-            <a href="#">Google+</a>
-          </div>
+            <div class="divinput">
+              <div class="lockIcon">
+                <i class="gg-lock"></i>
+              </div>
+              <input id="password1" type="password" class="loginu" name="password" placeholder="Password"
+                title="請確認字母大小寫是否正確" required />
+              <i id="eyeclose" class="bi-eye-slash"></i>
+              <i id="eyeopen" class="bi-eye"></i>
+            </div>
+            <input type="submit" id="loginbtn" class="logins" value="會員登入" />
+
+            <div class="line-with-circle">
+              <div class="divhr"></div>
+              <div class="circle"></div>
+              <div class="divhr"></div>
+            </div>
+            <div class="logobtn">
+              <a href="#">Facebook</a>
+              <a href="#">Google+</a>
+            </div>
+          </form>
         </div>
 
         <div class="signbox" id="signbox">
           <!-- <form class="loginbox" action="/signin" method="post"> -->
-          <div class="loginbox">
+          <form id="signinForm">
             <div class="loginPagelogo">
               <img src="./img/login/login_logo.png" alt="" />
             </div>
@@ -90,7 +92,7 @@
                 <div class="divinput">
                   <i class="bi bi-person"></i>
                   <input type="text" class="loginu" name="username" placeholder="使用者名稱"
-                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="不能包含特殊字元" required />
+                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上，且不能包含特殊字元" required />
                 </div>
                 <div class="divinput">
                   <div class="lockIcon">
@@ -106,7 +108,7 @@
                     <i class="gg-lock-unlock"></i>
                   </div>
                   <input id="password3" type="password" class="loginu" placeholder="再次輸入密碼"
-                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請確認與密碼輸入相同" required />
+                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請確認與原輸入密碼相同" required />
                   <i id="eyeclose3" class="bi-eye-slash"></i>
                   <i id="eyeopen3" class="bi-eye"></i>
                 </div>
@@ -130,13 +132,12 @@
               </div>
             </div>
             <input type="submit" class="logins" id="signbtn" value="註冊內容" />
-            <input type="submit" class="logins" id="signbtn5" value="測試正規" />
             <div class="logobtn">
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
             </div>
-            <input style="display: none;" type="text" name="user_id" value="<%=  userLast.user_id %>">
-          </div>
+            <input style="display: block;" type="text" name="user_id" value="<%=  userLast.user_id %>">
+          </form>
         </div>
       </div>
     </div>
@@ -144,19 +145,11 @@
     <script src="/app/login.js"></script>
     <script>
       $(function () {
-        $("#signbtn5").on("click", function () {
-          const ckPassword = $("input[name='email']").val();
-          // const ckPassword = "iwn923@gmaissd";
-          const passwordRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-          // console.log(passwordRegex.test(ckPassword))
-          if (passwordRegex.test(ckPassword)==false) {
-            alert("請確保信箱是以abc123@gmail.com的格式輸入")
-          }
-        })
 
         // 註冊鈕
-        $("#signbtn").on("click", function () {
+        $("#signinForm").on("submit", function () {
           // const userId = $("#user_id").val();
+          event.preventDefault();
 
           if ($('#password2').val() === $('#password3').val()) {
             $.ajax({
@@ -173,6 +166,7 @@
             }).done(function (data) {
               if (data == "success") {
                 alert("註冊成功，請登入");
+                location.reload();
                 console.log(data)
               } else {
                 // data.includes('username')?alert("內容有誤-帳號"):
@@ -191,12 +185,13 @@
             // console.log(data);
 
           } else {
-            alert("內容有誤-密碼不相同");
-            location.reload();
+            alert("請確認兩次密碼輸入一致");
+            // location.reload();
           }
         });
 
-        $("#loginbtn").on("click", function () {
+        $("#loginForm").on("submit", function () {
+          event.preventDefault();
           $.ajax({
             url: "/login/getUsername",
             type: "POST",
@@ -207,12 +202,13 @@
           }).done(function (data) {
             console.log(data)
 
-            if (data == true) {
+            if (data == "success") {
               alert("登入成功");
+              window.location.assign("http://localhost/"); //登入成功後，自動導向哪邊
             } else {
               alert("帳號或密碼錯誤");
+              // location.reload();
             }
-            // location.reload();
           })
         });
       })

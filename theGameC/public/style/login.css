@@ -190,7 +190,7 @@ p {
 
 ::-webkit-input-placeholder {
   color: rgb(179, 179, 179);
-  opacity: .5;
+  opacity: .9;
 }
 
 .loginu:focus {
@@ -210,6 +210,11 @@ p {
   letter-spacing: .3rem;
   font-size: 20px;
   box-shadow: 7px 7px 11px rgba(78, 78, 78, 0.25);
+  /* transition: 1s; */
+}
+.logins:active{
+  background-color:#0057A8;
+  padding: .4rem 4.9rem;
 }
 
 .line-with-circle {
