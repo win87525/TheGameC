@@ -5,6 +5,7 @@ const axios = require("axios");
 
 const login_insert = require("./login_CRUD/login_insert");
 const login_select = require("./login_CRUD/login_select");
+const post_email = require("./login_CRUD/post_email");
 
 
 
@@ -25,6 +26,7 @@ page.get("/", async (req, res) => {
 // 主要用於 wallet_CRUD
 page.use("/", login_insert);
 page.use("/", login_select);
+page.use("/", post_email);
 
 
 module.exports = page;

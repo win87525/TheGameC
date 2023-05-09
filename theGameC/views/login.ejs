@@ -80,14 +80,19 @@
             </div>
           </form>
           <!-- 忘記密碼彈跳窗 -->
-
-          <div class="popup-wrap" id="letmeopen">
-            <div class="popup-box transform-out">
-              <input type="text" value="請輸入帳號">
-              <input type="email" value="請填寫註冊時信箱">
-              <a class="close-btn popup-close" href="#">x</a>
+          <form action="" id="forgetbox">
+            <div class="popup-wrap" id="letmeopen">
+              <div class="popup-box transform-out">
+                <input name="fgUsername" type="text" placeholder="請輸入帳號">
+                <input name="fgEmail" type="email" placeholder="請填寫註冊時信箱">
+                <a class="close-btn popup-close" href="#">x</a>
+                <input type="submit" value="寄送驗證碼">
+                <input type="text" placeholder="請輸入驗證碼">
+                <input type="text" placeholder="請輸入新密碼!">
+                <input id="updatePwd" type="submit" value="確認修改">
+              </div>
             </div>
-          </div>
+          </form>
         </div>
 
         <div class="signbox" id="signbox">
@@ -158,6 +163,23 @@
     <script src="/app/login.js"></script>
     <script>
       $(function () {
+        // 寄件到信箱
+        $("#forgetbox").on("submit", function () {
+          event.preventDefault();
+          $.ajax({
+            url: "/login/aaa",
+            type: "POST",
+            data: {
+              username: $("input[name='fgUsername']").val(),
+              password: $("input[name='fgEmail']").val()
+            },
+          }).done(function (data) {
+            console.log(data)
+            $('#updatePwd').on('click',function(){
+              alert(data)
+            })
+          })
+        })
 
         // 註冊鈕
         $("#signinForm").on("submit", function () {
