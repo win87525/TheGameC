@@ -13,7 +13,7 @@ page.get("/last_id", (req, res) => {
     sql,
     // 名稱照 /: 打
     function (err, results, fields) {
-      console.log(results[0]);
+      // console.log(results[0]);
       res.send(JSON.stringify(results[0]));
     }
   );

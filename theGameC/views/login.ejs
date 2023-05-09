@@ -79,21 +79,8 @@
               <a href="#">Google+</a>
             </div>
           </form>
-          <!-- 忘記密碼彈跳窗 -->
-          <form action="" id="forgetbox">
-            <div class="popup-wrap" id="letmeopen">
-              <div class="popup-box transform-out">
-                <input name="fgUsername" type="text" placeholder="請輸入帳號">
-                <input name="fgEmail" type="email" placeholder="請填寫註冊時信箱">
-                <a class="close-btn popup-close" href="#">x</a>
-                <input type="submit" value="寄送驗證碼">
-                <input type="text" placeholder="請輸入驗證碼">
-                <input type="text" placeholder="請輸入新密碼!">
-                <input id="updatePwd" type="submit" value="確認修改">
-              </div>
-            </div>
-          </form>
         </div>
+
 
         <div class="signbox" id="signbox">
           <!-- <form class="loginbox" action="/signin" method="post"> -->
@@ -109,14 +96,14 @@
                 <div class="divinput">
                   <i class="bi bi-person"></i>
                   <input type="text" class="loginu" name="username" placeholder="使用者名稱"
-                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上，且不能包含特殊字元" required />
+                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上英文加數字，且不能包含特殊字元" required />
                 </div>
                 <div class="divinput">
                   <div class="lockIcon">
                     <i class="gg-lock"></i>
                   </div>
                   <input id="password2" type="password" name="password" class="loginu" placeholder="請輸入密碼"
-                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上，且不能包含特殊字元" required />
+                    pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上英文加數字，且不能包含特殊字元" required />
                   <i id="eyeclose2" class="bi-eye-slash"></i>
                   <i id="eyeopen2" class="bi-eye"></i>
                 </div>
@@ -153,33 +140,93 @@
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
             </div>
-            <input style="display: block;" type="text" name="user_id" value="<%=  userLast.user_id %>">
+            <!-- <input style="display: block;" type="text" name="user_id" value="<%=  userLast.user_id %>"> -->
           </form>
         </div>
       </div>
     </div>
+    <!-- 忘記密碼彈跳窗 -->
+    <form id="forgetBox">
+      <div class="popup-wrap" id="letmeopen">
+        <div class="popup-box transform-out">
+          <h1>忘記密碼</h1>
+          <h3>請先輸入遊玩帳號，點選寄送驗證碼，並至該信箱取得驗證碼，在執行下列操作!</h3>
+          <div class="divinput">
+            <i class="bi bi-person"></i>
+            <input type="text" class="loginu" id="fgUsername" placeholder="請輸入帳號" name="fgUsername" required />
+            <span id="Verification_But">寄送驗證碼</span>
+          </div>
 
+          <!-- <input type="button" value="寄送驗證碼" id="Verification_But"> -->
+
+          <div class="divinput">
+            <i class="gg-lock"></i>
+            <input type="number" class="loginu" id="Verification" placeholder="請填寫信箱內的驗證碼" name="fgNewpad" required />
+          </div>
+
+          <div class="divinput">
+            <i class="gg-lock"></i>
+            <input type="text" class="loginu" id="fgNewpad" placeholder="請填寫新密碼" name="fgNewpad"
+              pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上英文加數字，且不能包含特殊字元" required />
+          </div>
+          <div class="divinput">
+            <i class="gg-lock"></i>
+            <input type="text" class="loginu" id="aginNewpswd" placeholder="再次輸入新密碼" name="aginNewpswd" required />
+          </div>
+
+          <input type="submit" class="loginu" id="updatebut" />
+          <div class="close-btn">
+            <a class=" popup-close" href="#">x</a>
+          </div>
+        </div>
+      </div>
+    </form>
     <script src="./app.js"></script>
     <script src="/app/login.js"></script>
     <script>
       $(function () {
-        // 寄件到信箱
-        $("#forgetbox").on("submit", function () {
+        // 寄驗證碼到信箱
+        $("#Verification_But").on("click", function () {
           event.preventDefault();
           $.ajax({
-            url: "/login/aaa",
+            url: "/login/getVerification",
             type: "POST",
             data: {
               username: $("input[name='fgUsername']").val(),
-              password: $("input[name='fgEmail']").val()
             },
           }).done(function (data) {
             console.log(data)
-            $('#updatePwd').on('click',function(){
-              alert(data)
-            })
+            // $('#updatePwd').on('click', function () {
+            alert(data)
+            // })
           })
         })
+        // 更改密碼
+        $("#forgetBox").on("submit", function () {
+          event.preventDefault();
+          $.ajax({
+            url: "/login/updatePswd",
+            type: "POST",
+            data: {
+              username: $("input[id='fgUsername']").val(),
+              verification: $("input[id='Verification']").val(),
+              newpswd: $("input[id='fgNewpad']").val(),
+              aginNewpswd: $("input[id='aginNewpswd']").val(),
+            },
+          }).done(function (data) {
+            if (data === '變更密碼成功! 請重新登入') {
+              alert(data)
+              window.location.assign("http://localhost/login");
+              // console.log(data)
+            } else {
+              // console.log(data)
+              alert(data)
+            }
+            // $('#updatePwd').on('click', function () {
+            // })
+          })
+        })
+
 
         // 註冊鈕
         $("#signinForm").on("submit", function () {
@@ -224,7 +271,7 @@
             // location.reload();
           }
         });
-
+        //登入
         $("#loginForm").on("submit", function () {
           event.preventDefault();
           $.ajax({
