@@ -140,7 +140,7 @@
               <a href="#">Facebook</a>
               <a href="#">Google+</a>
             </div>
-            <!-- <input style="display: block;" type="text" name="user_id" value="<%=  userLast.user_id %>"> -->
+            <input style="display: none;" type="text" name="user_id" value="<%=  userLast.user_id %>">
           </form>
         </div>
       </div>
@@ -149,32 +149,34 @@
     <form id="forgetBox">
       <div class="popup-wrap" id="letmeopen">
         <div class="popup-box transform-out">
-          <h1>忘記密碼</h1>
-          <h3>請先輸入遊玩帳號，點選寄送驗證碼，並至該信箱取得驗證碼，在執行下列操作!</h3>
-          <div class="divinput">
-            <i class="bi bi-person"></i>
-            <input type="text" class="loginu" id="fgUsername" placeholder="請輸入帳號" name="fgUsername" required />
+          <h1 class="fgH1">忘記密碼</h1>
+          <!-- <h3>請先輸入遊玩帳號，點選寄送驗證碼，並至該信箱取得驗證碼，在執行下列操作!</h3> -->
+          <div class="fgdivinput">
+            <i class="gg-profile"></i>
+            <input type="text" class="fgInput" id="fgUsername" placeholder="請輸入帳號" name="fgUsername" required />
             <span id="Verification_But">寄送驗證碼</span>
           </div>
 
-          <!-- <input type="button" value="寄送驗證碼" id="Verification_But"> -->
-
-          <div class="divinput">
-            <i class="gg-lock"></i>
-            <input type="number" class="loginu" id="Verification" placeholder="請填寫信箱內的驗證碼" name="fgNewpad" required />
+          <div class="fgdivinput">
+            <i class="gg-pocket"></i>
+            <input type="number" class="fgInput" id="Verification" placeholder="請填寫信箱內的驗證碼" name="fgNewpad" required />
           </div>
 
-          <div class="divinput">
-            <i class="gg-lock"></i>
-            <input type="text" class="loginu" id="fgNewpad" placeholder="請填寫新密碼" name="fgNewpad"
+          <div class="fgdivinput">
+            <div class="lockbox">
+              <i class="gg-lock lock"></i>
+            </div>
+            <input type="text" class="fgInput" id="fgNewpad" placeholder="請填寫新密碼" name="fgNewpad"
               pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$" title="請輸入至少6碼以上英文加數字，且不能包含特殊字元" required />
           </div>
-          <div class="divinput">
-            <i class="gg-lock"></i>
-            <input type="text" class="loginu" id="aginNewpswd" placeholder="再次輸入新密碼" name="aginNewpswd" required />
+          <div class="fgdivinput">
+            <div class="lockbox">
+              <i class="gg-lock"></i>
+            </div>
+            <input type="text" class="fgInput" id="aginNewpswd" placeholder="再次輸入新密碼" name="aginNewpswd" required />
           </div>
 
-          <input type="submit" class="loginu" id="updatebut" />
+          <input type="submit" class="fgInput fgBut" id="updatebut" />
           <div class="close-btn">
             <a class=" popup-close" href="#">x</a>
           </div>
@@ -183,119 +185,6 @@
     </form>
     <script src="./app.js"></script>
     <script src="/app/login.js"></script>
-    <script>
-      $(function () {
-        // 寄驗證碼到信箱
-        $("#Verification_But").on("click", function () {
-          event.preventDefault();
-          $.ajax({
-            url: "/login/getVerification",
-            type: "POST",
-            data: {
-              username: $("input[name='fgUsername']").val(),
-            },
-          }).done(function (data) {
-            console.log(data)
-            // $('#updatePwd').on('click', function () {
-            alert(data)
-            // })
-          })
-        })
-        // 更改密碼
-        $("#forgetBox").on("submit", function () {
-          event.preventDefault();
-          $.ajax({
-            url: "/login/updatePswd",
-            type: "POST",
-            data: {
-              username: $("input[id='fgUsername']").val(),
-              verification: $("input[id='Verification']").val(),
-              newpswd: $("input[id='fgNewpad']").val(),
-              aginNewpswd: $("input[id='aginNewpswd']").val(),
-            },
-          }).done(function (data) {
-            if (data === '變更密碼成功! 請重新登入') {
-              alert(data)
-              window.location.assign("http://localhost/login");
-              // console.log(data)
-            } else {
-              // console.log(data)
-              alert(data)
-            }
-            // $('#updatePwd').on('click', function () {
-            // })
-          })
-        })
-
-
-        // 註冊鈕
-        $("#signinForm").on("submit", function () {
-          // const userId = $("#user_id").val();
-          event.preventDefault();
-
-          if ($('#password2').val() === $('#password3').val()) {
-            $.ajax({
-              url: "/login/signin",
-              type: "POST",
-              data: {
-                user_id: parseInt($("input[name='user_id']").val()) + 1,
-                username: $("input[name='username']").val(),
-                password: $("input[id='password2']").val(),
-                email: $("input[name='email']").val(),
-                phone: $("input[name='phone']").val(),
-                birthday: $("input[name='birthday']").val()
-              },
-            }).done(function (data) {
-              if (data == "success") {
-                alert("註冊成功，請登入");
-                location.reload();
-                console.log(data)
-              } else {
-                // data.includes('username')?alert("內容有誤-帳號"):
-                // data.includes('email')?   alert("內容有誤-信箱"):alert("內容有誤-其它錯誤")
-                if (data.includes('username')) {
-                  alert("該帳號已有人使用")
-                } else if (data.includes('email')) {
-                  alert("該信箱已有人使用")
-                } else {
-                  alert("請確認表格皆有填寫正確")
-                }
-                console.log(data)
-              }
-              // location.reload();
-            })
-            // console.log(data);
-
-          } else {
-            alert("請確認兩次密碼輸入一致");
-            // location.reload();
-          }
-        });
-        //登入
-        $("#loginForm").on("submit", function () {
-          event.preventDefault();
-          $.ajax({
-            url: "/login/getUsername",
-            type: "POST",
-            data: {
-              username: $("input[id='loginUsername']").val(),
-              password: $("input[id='password1']").val()
-            },
-          }).done(function (data) {
-            console.log(data)
-
-            if (data == "success") {
-              alert("登入成功");
-              window.location.assign("http://localhost/"); //登入成功後，自動導向哪邊
-            } else {
-              alert("帳號或密碼錯誤");
-              // location.reload();
-            }
-          })
-        });
-      })
-
-    </script>
 </body>
 
 </html>

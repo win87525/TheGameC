@@ -27,7 +27,7 @@ page.post('/signin', function (req, res) {
             // res.redirect('/login')
             res.send('error: '+ err.sqlMessage)
           } else {
-            console.log("Insert recharge data successfully:", results);
+            // console.log("Insert recharge data successfully:", results);
             // res.send(results[0]);
             res.send('success')
           }
