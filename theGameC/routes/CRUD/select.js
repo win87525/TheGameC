@@ -4,7 +4,7 @@ const page = express.Router();
 const config = require("./config"); // 引用 config
 
 /* 會員資料 */
-page.get("/user/:id", (req, res) => {  //這裡的user是可以自訂義的，但是wallet.js那邊就要照這邊
+page.get("/user/:id", (req, res) => {
   var sql =
     "SELECT *, DATE_FORMAT(birthday, '%Y-%m-%d') AS birthday FROM users WHERE user_id = ?;";
   config.query(
@@ -17,12 +17,13 @@ page.get("/user/:id", (req, res) => {  //這裡的user是可以自訂義的，�
   );
 });
 
-/* 會員擁有遊戲資料 */
+/* 會員擁有遊戲資料 user_games */
 page.get("/user_games/:id", (req, res) => {
   var sql = `SELECT
   users.username,
   GROUP_CONCAT(user_games.image) AS images,
-  GROUP_CONCAT(games.game_name) AS games
+  GROUP_CONCAT(games.game_name) AS games,
+  GROUP_CONCAT(games.game_id) AS gameID
 FROM
   user_games
   INNER JOIN users ON user_games.user_id = users.user_id
@@ -43,6 +44,21 @@ ORDER BY
   );
 });
 
-
-
+/* 會員擁有遊戲資料 user_games */
+page.get("/game_coin/:id/:game_id", (req, res) => {
+  var sql = "SELECT * FROM user_games WHERE user_id = ? AND game_id = ?";
+  config.query(
+    sql,
+    [req.params.id, req.params.game_id], // 名稱照 /: 打
+    function (err, results, fields) {
+      if (err) {
+        console.log("Error:", err);
+        res.send("Game_coin 出錯：", err);
+      } else {
+        console.log("Game_coin 成功:", results);
+        res.send(results);
+      }
+    }
+  );
+});
 module.exports = page;

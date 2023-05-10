@@ -6,6 +6,8 @@
 
 /* 字體 */
 body {
+  // min-width: 1920px; /* 設置最大寬度為 1440 像素 */
+  // margin: 0 auto; /* 讓網頁置中顯示 */
   font-family: "Microsoft YaHei", sans-serif;
   letter-spacing: 2px;
   p {
@@ -222,8 +224,15 @@ footer {
           a {
             text-decoration: none;
             color: white;
-            font-size: 0.9rem;
+            font-size: 1rem;
             letter-spacing: 3px;
+            padding: 5px 15px;
+            border-radius: 15px;
+            transition: 0.15s;
+          }
+          a:hover {
+            background-color: #fff;
+            color: black;
           }
         }
       }

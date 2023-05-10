@@ -2,7 +2,6 @@ const express = require("express");
 const page = express.Router();
 const path = require("path");
 
-
 page.get("/", (req, res) => {
   // 確定登入以後session有存入到首頁
   if (req.session) {

@@ -1,27 +1,70 @@
 @charset "UTF-8";
 /* section1 標題 */
 .section1 {
-  width: 80%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 62.5%;
+  height: 180px;
+  display: flex;
+  margin: 30px auto;
+  background-color: #242424;
+  border-radius: 8px;
+  transition: 0.6s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.section1 .s1Info {
+  width: 47.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #242424;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  transition: 0.6s;
+}
+.section1 .s1Info h1 {
+  color: #ffffff;
+  font-size: 1.75rem;
+  text-shadow: 1px 1px 8px rgba(85, 85, 85, 0.75);
+}
+.section1 .s1Info p {
+  padding: 20px 40px;
+  font-size: 0.85rem;
+  color: #f8f8f8;
+}
+.section1 .s1Img {
+  width: 52.5%;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  flex-direction: column;
-}
-.section1 div.s1h1 {
-  border-bottom: 2px solid #f0f0f0;
-  display: inline-block;
-  padding: 10px 30px;
-}
-.section1 div.s1h1 h1 {
-  display: flex;
   justify-content: center;
-  font-style: normal;
-  font-weight: 700;
-  letter-spacing: 0.15em;
-  color: #1c3d5c;
+  -webkit-clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.section1 .s1Img img {
+  width: 100%;
+  height: auto;
+  filter: brightness(80%);
+  transition: 0.6s;
+}
+
+.section1:hover {
+  background-color: #0057a8;
+}
+.section1:hover .s1Info {
+  background-color: #0057a8;
+}
+.section1:hover .s1Info h1 {
+  color: #ffffff;
+}
+.section1:hover .s1Info p {
+  color: #f8f8f8;
+}
+.section1:hover .s1Img img {
+  filter: brightness(110%);
 }
 
 /* section2 內文 */
@@ -35,30 +78,21 @@
 .section2 .s2left {
   width: 70%;
 }
+.section2 .s2left hr {
+  width: 85%;
+}
 .section2 .s2left .new {
   display: flex;
   cursor: pointer;
-  margin: 0 0 30px 0;
+  margin: 25px 0 25px 0;
   padding: 18px;
   border-radius: 5px;
-  transition: transform 0.2s ease-in-out, background-color 0.5s ease-in-out;
-}
-.section2 .s2left .new .outline {
-  position: absolute;
-  z-index: -55;
-  width: 350px;
-  height: 250px;
-  background-image: url("../img/Games/AVA/cover.jpg");
-  background-color: transparent;
-  -webkit-clip-path: polygon(0% 0%, 90% 0, 100% 14%, 100% 100%, 0% 100%);
-          clip-path: polygon(0% 0%, 90% 0, 100% 14%, 100% 100%, 0% 100%);
-  left: 42.5px;
-  transform: translateY(-15px);
+  transition: transform 0.2s ease-in-out, background-color 0.35s ease-in-out;
 }
 .section2 .s2left .new .newImg {
-  width: 400px;
-  height: 220px;
-  margin: 0 20px 0 0;
+  width: 410px;
+  height: 245px;
+  margin: 0 30px 0 0;
   overflow: hidden;
   border-radius: 5px;
 }
@@ -76,20 +110,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 400px;
+  width: 450px;
   height: 220px;
   padding: 2.5% 20px 2.5% 20px;
   overflow: hidden;
   gap: 10px;
   border-radius: 5px;
 }
+.section2 .s2left .new .newContent h3 {
+  font-size: 1.25rem;
+}
 .section2 .s2left .new .newContent p.newDate {
   color: #9b9b9b;
+  font-size: 1.15rem;
 }
 .section2 .s2left .new .newContent p.newInfo {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.15rem;
 }
 .section2 .s2left .new .newContent a {
   margin-left: auto;
@@ -100,20 +139,27 @@
 .section2 .s2left .new:hover .newContent p.newDate {
   color: #ffffff;
 }
+.section2 hr {
+  opacity: 0.6;
+  margin: 15px;
+}
 .section2 .s2right {
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.section2 .s2right div.newClass {
+  margin-top: 40px;
+}
 .section2 .s2right div.newClass li {
   list-style: none;
-  margin: 0 0 40px 0;
+  margin: 0 0 60px 0;
   cursor: pointer;
 }
 .section2 .s2right div.newClass li div.oneNewClass {
-  width: 220px;
-  height: 85px;
+  width: 250px;
+  height: 100px;
   position: relative;
   transition: filter 0.4s ease-in-out;
 }
@@ -128,7 +174,7 @@
 .section2 .s2right div.newClass li div.oneNewClass span {
   position: absolute;
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 650;
   letter-spacing: 0.15rem;
   top: 15px;
@@ -143,8 +189,8 @@
   -webkit-clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
           clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
   background-color: #0057a8;
-  top: 9px;
-  left: 9px;
+  top: 12px;
+  left: 10px;
   z-index: -1;
 }
 .section2 .s2right div.newClass li div.oneNewClass div.bright {
@@ -166,17 +212,27 @@
 /* section3 頁碼 */
 .section3 {
   width: 80%;
-  margin: 20px auto 60px auto;
+  margin: 50px auto 60px auto;
   text-align: center;
 }
-.section3 span {
+.section3 a {
+  text-decoration: none;
   color: #9b9b9b;
-  margin: 0 10px;
+  font-size: 1.3rem;
+  padding: 8px 12px;
+  margin: 0 3px;
+  border-radius: 7.5px;
   cursor: pointer;
+  transition: 0.25s;
 }
-.section3 span#newPage1 {
+.section3 #nowPage {
   color: black;
 }
-.section3 span:hover {
-  color: black;
+.section3 a:hover {
+  background-color: #c9c9c9;
+  color: rgb(255, 255, 255);
+}
+.section3 .PageSelected {
+  background-color: #9b9b9b;
+  color: rgb(255, 255, 255);
 }/*# sourceMappingURL=news.css.map */

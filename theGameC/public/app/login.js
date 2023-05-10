@@ -45,12 +45,14 @@ $(document).ready(function () {
     $("#password3").attr("type", "password");
   });
 
-
   // 忘記密碼
   $(".popup-btn").click(function () {
-    var href = $(this).attr("href")
+    var href = $(this).attr("href");
     $(href).fadeIn(250);
-    $(href).children$("popup-box").removeClass("transform-out").addClass("transform-in");
+    $(href)
+      .children$("popup-box")
+      .removeClass("transform-out")
+      .addClass("transform-in");
     e.preventDefault();
   });
 
@@ -75,12 +77,12 @@ $(document).ready(function () {
         username: $("input[name='fgUsername']").val(),
       },
     }).done(function (data) {
-      console.log(data)
+      console.log(data);
       // $('#updatePwd').on('click', function () {
-      alert(data)
+      alert(data);
       // })
-    })
-  })
+    });
+  });
   // 更改密碼
   $("#forgetBox").on("submit", function () {
     event.preventDefault();
@@ -94,26 +96,25 @@ $(document).ready(function () {
         aginNewpswd: $("input[id='aginNewpswd']").val(),
       },
     }).done(function (data) {
-      if (data === '變更密碼成功! 請重新登入') {
-        alert(data)
+      if (data === "變更密碼成功! 請重新登入") {
+        alert(data);
         window.location.assign("http://localhost/login");
         // console.log(data)
       } else {
         // console.log(data)
-        alert(data)
+        alert(data);
       }
       // $('#updatePwd').on('click', function () {
       // })
-    })
-  })
-
+    });
+  });
 
   // 註冊鈕
   $("#signinForm").on("submit", function () {
     // const userId = $("#user_id").val();
     event.preventDefault();
 
-    if ($('#password2').val() === $('#password3').val()) {
+    if ($("#password2").val() === $("#password3").val()) {
       $.ajax({
         url: "/login/signin",
         type: "POST",
@@ -123,29 +124,28 @@ $(document).ready(function () {
           password: $("input[id='password2']").val(),
           email: $("input[name='email']").val(),
           phone: $("input[name='phone']").val(),
-          birthday: $("input[name='birthday']").val()
+          birthday: $("input[name='birthday']").val(),
         },
       }).done(function (data) {
         if (data == "success") {
           alert("註冊成功，請登入");
           location.reload();
-          console.log(data)
+          console.log(data);
         } else {
           // data.includes('username')?alert("內容有誤-帳號"):
           // data.includes('email')?   alert("內容有誤-信箱"):alert("內容有誤-其它錯誤")
-          if (data.includes('username')) {
-            alert("該帳號已有人使用")
-          } else if (data.includes('email')) {
-            alert("該信箱已有人使用")
+          if (data.includes("username")) {
+            alert("該帳號已有人使用");
+          } else if (data.includes("email")) {
+            alert("該信箱已有人使用");
           } else {
-            alert("請確認表格皆有填寫正確")
-            console.log(data)
+            alert("請確認表格皆有填寫正確");
+            console.log(data);
           }
         }
         // location.reload();
-      })
+      });
       // console.log(data);
-
     } else {
       alert("請確認兩次密碼輸入一致");
       // location.reload();
@@ -159,10 +159,10 @@ $(document).ready(function () {
       type: "POST",
       data: {
         username: $("input[id='loginUsername']").val(),
-        password: $("input[id='password1']").val()
+        password: $("input[id='password1']").val(),
       },
     }).done(function (data) {
-      console.log(data)
+      console.log(data);
 
       if (data == "success") {
         alert("登入成功");
@@ -171,7 +171,6 @@ $(document).ready(function () {
         alert("帳號或密碼錯誤");
         // location.reload();
       }
-    })
+    });
   });
-
 });

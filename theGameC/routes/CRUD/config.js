@@ -13,7 +13,7 @@ connect.connect(function (err, connection) {
     console.log("資料庫連線錯誤", err.sqlMessage);
   } else {
     console.log("資料庫連線成功");
-    // console.log(connection);
+    console.log(connection);
   }
 });
 

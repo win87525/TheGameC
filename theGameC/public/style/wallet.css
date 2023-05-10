@@ -214,6 +214,9 @@
   display: flex;
   gap: 25px;
 }
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv input {
+  cursor: pointer;
+}
 .section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 {
   background-color: #ffffff;
   width: 150px;
@@ -221,6 +224,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 li {
   list-style: none;
@@ -346,6 +350,9 @@ dialog#rechargedialog .credit_paypal_gash .Lconfirm {
   font-weight: 700;
   color: #1c3d5c;
 }
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCtitle {
+  font-size: 1.15rem;
+}
 dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy {
   margin-top: 25px;
   text-align: start;
@@ -353,6 +360,9 @@ dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy {
 dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li {
   list-style-type: none;
   display: flex;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li span {
+  font-size: 1.1rem;
 }
 dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li .LCBthing {
   margin-right: 120px;
@@ -393,8 +403,8 @@ dialog#rechargedialog .credit_paypal_gash form .gashEnter div {
 dialog#rechargedialog .credit_paypal_gash form .creditEnter div label,
 dialog#rechargedialog .credit_paypal_gash form .paypalEnter div label,
 dialog#rechargedialog .credit_paypal_gash form .gashEnter div label {
-  font-size: 0.9rem;
-  font-weight: normal;
+  font-size: 1.025rem;
+  font-weight: 500;
 }
 dialog#rechargedialog .credit_paypal_gash form .creditEnter div input,
 dialog#rechargedialog .credit_paypal_gash form .paypalEnter div input,
@@ -448,17 +458,18 @@ dialog#rechargedialog button#closeDialog img {
   justify-content: flex-start;
 }
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div {
-  width: 25%;
+  width: 20%;
   padding: 15px 0;
   display: flex;
   justify-content: center;
 }
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game {
   border: 2px solid #9a9a9a;
-  width: 75%;
+  width: 85%;
+  height: 260px;
   border-radius: 5px;
   padding: 20px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   text-align: center;
   background-color: #ffffff;
   transition: 0.15s;
@@ -468,8 +479,8 @@ dialog#rechargedialog button#closeDialog img {
   cursor: pointer;
 }
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game div {
-  width: 130px;
-  height: 150px;
+  width: 90%;
+  height: 220px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -486,7 +497,7 @@ dialog#rechargedialog button#closeDialog img {
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game span,
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game p {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game:hover,
 .section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .GSelected {
@@ -557,7 +568,7 @@ dialog#rechargedialog button#closeDialog img {
   gap: 20px;
 }
 #exchangedialog form div p {
-  font-size: 1rem;
+  font-size: 1.15rem;
   text-align: center;
   color: #1c3d5c;
   font-weight: bold;
@@ -572,6 +583,9 @@ dialog#rechargedialog button#closeDialog img {
   list-style-type: none;
   display: flex;
   justify-content: flex-start;
+}
+#exchangedialog form div .exconfirm li span {
+  font-size: 1.1rem;
 }
 #exchangedialog form div .exconfirm li span:nth-of-type(1) {
   margin-right: auto;
@@ -635,10 +649,10 @@ dialog#rechargedialog button#closeDialog img {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 #PIdialog form div p {
-  font-size: 1rem;
+  font-size: 1.15rem;
   text-align: center;
   color: #1c3d5c;
   font-weight: bold;
@@ -653,14 +667,16 @@ dialog#rechargedialog button#closeDialog img {
   list-style-type: none;
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   margin: 5px 0;
 }
 #PIdialog form div .PIfirm li span {
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 #PIdialog form div .PIfirm li input {
-  font-size: 1rem;
+  border-radius: 5px;
   padding: 3px 5px;
+  font-size: 1.15rem;
 }
 #PIdialog form div .PIfirm li span:nth-of-type(1) {
   margin-right: auto;

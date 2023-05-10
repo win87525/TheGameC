@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
-    crossorigin="anonymous"></script>
-  <script src="/app/jquery.js"></script>
-  <!-- bootstrap5 icon -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
-  <!-- css -->
-  <link rel="stylesheet" href="/style/style.css" />
-  <link rel="stylesheet" href="/style/index.css" />
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- slick -->
-  <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
-  <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
-  <!-- splide -->
-  <script src="
+  <head>
+    <meta charset="UTF-8" />
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/app/jquery.js"></script>
+    <!-- bootstrap5 icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/index.css" />
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- slick -->
+    <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
+    <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
+    <!-- splide -->
+    <script src="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
 "></script>
-  <link href="
+    <link
+      href="
 https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
-" rel="stylesheet">
-  <!-- fullPage.css -->
-  <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
-  <link rel="icon" href="/img/header/logoicon.ico" />
-  <title>ThegameC首頁</title>
-</head>
+"
+      rel="stylesheet"
+    />
+    <!-- fullPage.css -->
+    <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
+    <link rel="icon" href="/img/header/logoicon.ico" />
+    <title>ThegameC首頁</title>
+  </head>
 
-<body>
-  <!-- header -->
-  <%- include('share/header')%>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
 
     <div id="fullpage">
       <div class="section">
         <!-- carousel -->
         <div class="carousel">
           <h1>線上遊戲</h1>
-          <section class="center slider" style="transition: 1s" data-aos="zoom-in">
+          <section
+            class="center slider"
+            style="transition: 1s"
+            data-aos="zoom-in"
+          >
             <div>
               <img src="/img/index/maplestory.jpg" />
               <h1>《新楓之谷》</h1>
@@ -117,50 +129,54 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
           </div>
           <div class="botm">
             <div class="pic">
-              <section id="main-carousel" class="splide"
-              aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
-              <div class="splide__track">
-                  <img class="alpha" src="/img/index/Comp.gif" alt="">
+              <section
+                id="main-carousel"
+                class="splide"
+                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
+              >
+                <div class="splide__track">
+                  <img class="alpha" src="/img/index/Comp.gif" alt="" />
                   <ul class="splide__list">
                     <li class="splide__slide">
-                      <img src="/img/index/assassin1.png" alt="">
+                      <img src="/img/index/assassin1.png" alt="" />
                     </li>
                     <li class="splide__slide">
-                      <img src="/img/index/marksman1.png" alt="">
+                      <img src="/img/index/marksman1.png" alt="" />
                     </li>
                     <li class="splide__slide">
-                      <img src="/img/index/assassin1.png" alt="">
+                      <img src="/img/index/assassin1.png" alt="" />
                     </li>
                     <li class="splide__slide">
-                      <img src="/img/index/support1.png" alt="">
+                      <img src="/img/index/support1.png" alt="" />
                     </li>
                     <li class="splide__slide">
-                      <img src="/img/index/marksman1.png" alt="">
+                      <img src="/img/index/marksman1.png" alt="" />
                     </li>
-                    
                   </ul>
                 </div>
               </section>
-              <section id="thumbnail-carousel" class="splide"
-                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+              <section
+                id="thumbnail-carousel"
+                class="splide"
+                aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel."
+              >
                 <div class="splide__track">
                   <ul class="splide__list">
                     <li id="picimg1" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="">
+                      <img src="/img/index/LOL.jpg" alt="" />
                     </li>
                     <li id="picimg2" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="">
+                      <img src="/img/index/LOL.jpg" alt="" />
                     </li>
                     <li id="picimg3" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="">
+                      <img src="/img/index/LOL.jpg" alt="" />
                     </li>
                     <li id="picimg4" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="">
+                      <img src="/img/index/LOL.jpg" alt="" />
                     </li>
                     <li id="picimg5" class="splide__slide border">
-                      <img src="/img/index/LOL.jpg" alt="">
+                      <img src="/img/index/LOL.jpg" alt="" />
                     </li>
-                    
                   </ul>
                 </div>
               </section>
@@ -427,9 +443,14 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
       </div>
     </div>
     <script src="/app/index.js"></script>
+    <script src="/app/app.js"></script>
 
     <!-- slick輪播圖 -->
-    <script src="./kits/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script
+      src="./kits/slick/slick/slick.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
     <script type="text/javascript">
       $(".center").slick({
         centerMode: true,
@@ -469,16 +490,15 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
 
     <!-- splide -->
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        var main = new Splide('#main-carousel', {
-          type: 'fade',
+      document.addEventListener("DOMContentLoaded", function () {
+        var main = new Splide("#main-carousel", {
+          type: "fade",
           rewind: true,
           pagination: false,
           arrows: false,
         });
 
-
-        var thumbnails = new Splide('#thumbnail-carousel', {
+        var thumbnails = new Splide("#thumbnail-carousel", {
           fixedWidth: 100,
           fixedHeight: 60,
           gap: 10,
@@ -493,12 +513,10 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css
           },
         });
 
-
         main.sync(thumbnails);
         main.mount();
         thumbnails.mount();
       });
     </script>
-</body>
-
+  </body>
 </html>

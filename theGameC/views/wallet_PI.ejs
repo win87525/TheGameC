@@ -37,7 +37,8 @@
                 <tr>
                   <th>暱稱：</th>
                   <td id="nickname">
-                    <%= userData.nickname?userData.nickname:"尚未填寫" %>
+                    <%= userData.nickname ? userData.nickname :
+                    userData.username ? userData.username : '尚未填寫'; %>
                   </td>
                 </tr>
                 <tr>
@@ -76,7 +77,7 @@
       <button id="closeDialog">
         <img src="/img/wallet/close.png" alt="" />
       </button>
-      <form method="put" action="/updatePI">
+      <form id="updateForm" method="put" action="/updatePI">
         <input
           type="hidden"
           id="user_id"
@@ -91,20 +92,25 @@
               <input
                 id="edit_nickname"
                 name="edit_nickname"
+                placeholder="取一個喜歡的暱稱"
                 value="<%= userData.nickname %>"
               />
             </li>
             <li>
               <span>手機：</span>
               <input
+                type="tel"
                 id="edit_phone"
                 name="edit_phone"
+                pattern="^09\d{2}\d{6}$"
+                title="請輸入09開頭的10碼電話號碼"
                 value="<%= userData.phone %>"
+                required
               />
             </li>
           </div>
         </div>
-        <button id="update" type="button">確認修改</button>
+        <button id="update" type="submit">確認修改</button>
       </form>
     </dialog>
 
@@ -150,7 +156,8 @@
 
       /* 更新 */
       $(function () {
-        $("#update").on("click", function () {
+        $("#updateForm").on("submit", function () {
+          event.preventDefault();
           const userId = $("#user_id").val();
           $.ajax({
             url: `http://localhost:80/wallet/updatePI/${userId}`,
@@ -161,7 +168,6 @@
             },
           }).done((data) => {
             console.log(data);
-
             $("#phone").text($("input[name='edit_phone']").val());
             $("#nickname").text($("input[name='edit_nickname']").val());
             document.querySelector("dialog").close();
